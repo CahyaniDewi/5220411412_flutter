@@ -19,7 +19,7 @@ class GridViewPage extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Container(
-              height: 200, // Membatasi tinggi GridView
+              height: 200, // Membatasi tinggi GridView 
               child: GridView.count(
                 crossAxisCount: 2, // Jumlah kolom
                 children: List.generate(6, (index) {
