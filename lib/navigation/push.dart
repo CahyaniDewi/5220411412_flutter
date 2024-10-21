@@ -3,8 +3,10 @@ import 'package:flutter_nav/widget/center.dart';
 import 'package:flutter_nav/widget/container.dart';
 import 'package:flutter_nav/widget/icon.dart';
 import 'package:flutter_nav/widget/image.dart';
+import 'package:flutter_nav/widget/listview.dart';
 import 'package:flutter_nav/widget/sizebox.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_nav/widget/stack.dart';
 import 'package:flutter_nav/widget/text.dart';
 
 class PushNavigationPage extends StatefulWidget {
@@ -43,9 +45,9 @@ class _PushNavigationPageState extends State<PushNavigationPage> {
                   backgroundColor: Colors.blue, foregroundColor: Colors.white),
               child: const Text('Go to Size Box'),
             ),
-            const SizedBox(
-              height: 16.0,
-            ),
+            // const SizedBox(
+            //   height: 16.0,
+            // ),
             ElevatedButton(
               onPressed: () => Navigator.push(
                   context,
@@ -53,9 +55,10 @@ class _PushNavigationPageState extends State<PushNavigationPage> {
                     builder: (context) => const CenterPage(),
                   )),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue, foregroundColor: Colors.white),
+                  backgroundColor: Colors.blueGrey, foregroundColor: Colors.white),
               child: const Text('Go to Center Page'),
             ),
+
             ElevatedButton(
               onPressed: () => Navigator.push(
                   context,
@@ -63,22 +66,39 @@ class _PushNavigationPageState extends State<PushNavigationPage> {
                     builder: (context) => const TextPage(),
                   )),
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue, foregroundColor: Colors.white),
+                  backgroundColor: Colors.green, foregroundColor: Colors.white),
               child: const Text('Go to Text Box'),
             ),
+
             ElevatedButton(
               onPressed: () {
                 // Navigasi ke halaman container ketika tombol ditekan
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => TextFieldPage()),
+                  MaterialPageRoute(builder: (context) => StackPage()),
                 );
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.yellow,
                   foregroundColor: Colors.white),
-              child: Text('Go to TextField Page'),
+              child: Text('Go to Stack Page'),
             ),
+
+            // textfield button
+            ElevatedButton(
+              onPressed: () {
+                // Navigasi ke halaman container ketika tombol ditekan
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TextFieldFormPage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.brown,
+                  foregroundColor: Colors.white),
+              child: Text('Go to TextField Form Page'),
+            ),
+
             ElevatedButton(
               onPressed: () {
                 // Navigasi ke halaman container ketika tombol ditekan
@@ -104,6 +124,7 @@ class _PushNavigationPageState extends State<PushNavigationPage> {
                   foregroundColor: Colors.white),
               child: Text('Go to Container Page'),
             ),
+
             ElevatedButton(
               onPressed: () {
                 // Navigasi ke halaman IconPage ketika tombol ditekan
@@ -116,6 +137,19 @@ class _PushNavigationPageState extends State<PushNavigationPage> {
                   backgroundColor: Colors.red, foregroundColor: Colors.white),
               child: Text('Go to Icon Page'),
             ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ListViewExamplePage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 228, 54, 244), foregroundColor: Colors.white),
+              child: Text('Go to ListView Page'),
+            ),
+
           ],
         )),
       ),

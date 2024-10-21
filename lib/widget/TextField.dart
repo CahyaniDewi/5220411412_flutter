@@ -1,50 +1,51 @@
 import 'package:flutter/material.dart';
 
-class TextFieldPage extends StatefulWidget {
+class TextFieldFormPage extends StatefulWidget {
   @override
-  _TextFieldExamplePageState createState() => _TextFieldExamplePageState();
+  _TextFieldFormPageState createState() => _TextFieldFormPageState();
 }
 
-class _TextFieldExamplePageState extends State<TextFieldPage> {
-  // Controller untuk menangani input TextField
-  final TextEditingController _controller = TextEditingController();
-  String _inputText = '';
+class _TextFieldFormPageState extends State<TextFieldFormPage> {
+  // Controllers untuk menangani input
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TextField Page'),
+        title: Text('TextField Form Example'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // TextField biasa dengan controller
+            // TextField untuk Nama Lengkap
             TextField(
-              controller: _controller,
+              controller: _nameController,
               decoration: InputDecoration(
-                labelText: 'Enter some text',
+                labelText: 'Nama Lengkap',
                 border: OutlineInputBorder(),
               ),
-              onChanged: (text) {
-                setState(() {
-                  _inputText = text; // Menyimpan input teks untuk ditampilkan
-                });
-              },
             ),
             SizedBox(height: 20),
-            // Menampilkan input yang diambil dari TextField
-            Text(
-              'You typed: $_inputText',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 20),
-            // TextField dengan properti tambahan seperti hint dan icon
+            // TextField untuk No HP
             TextField(
+              controller: _phoneController,
               decoration: InputDecoration(
-                hintText: 'Enter your email',
+                labelText: 'No HP',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.phone),
+              ),
+              keyboardType: TextInputType.phone,
+            ),
+            SizedBox(height: 20),
+            // TextField untuk Email
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
                 labelText: 'Email',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.email),
@@ -52,31 +53,53 @@ class _TextFieldExamplePageState extends State<TextFieldPage> {
               keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(height: 20),
-            // TextField dengan pengaturan obfuscation (password input)
+            // TextField untuk Password
             TextField(
+              controller: _passwordController,
               decoration: InputDecoration(
-                hintText: 'Enter your password',
                 labelText: 'Password',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.lock),
               ),
-              obscureText: true, // Menyembunyikan teks (untuk password)
+              obscureText: true, // Menyembunyikan input untuk password
             ),
             SizedBox(height: 20),
+            // Tombol untuk menampilkan input dalam dialog
             ElevatedButton(
               onPressed: () {
-                // Aksi tombol untuk mendapatkan teks dari TextField
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    content: Text('You typed: ${_controller.text}'),
-                  ),
-                );
+                _showInputData(context);
               },
-              child: Text('Show Input'),
+              child: Text('Submit'),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  // Fungsi untuk menampilkan input dalam dialog
+  void _showInputData(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Data Input'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text('Nama Lengkap: ${_nameController.text}'),
+            Text('No HP: ${_phoneController.text}'),
+            Text('Email: ${_emailController.text}'),
+            Text('Password: ${_passwordController.text}'),
+          ],
+        ),
+        actions: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('OK'),
+          ),
+        ],
       ),
     );
   }
