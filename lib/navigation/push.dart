@@ -1,6 +1,8 @@
 import 'package:flutter_nav/widget/TextField.dart';
 import 'package:flutter_nav/widget/center.dart';
+import 'package:flutter_nav/widget/combinasiwidget.dart';
 import 'package:flutter_nav/widget/container.dart';
+import 'package:flutter_nav/widget/gridview.dart';
 import 'package:flutter_nav/widget/icon.dart';
 import 'package:flutter_nav/widget/image.dart';
 import 'package:flutter_nav/widget/listview.dart';
@@ -148,6 +150,30 @@ class _PushNavigationPageState extends State<PushNavigationPage> {
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 228, 54, 244), foregroundColor: Colors.white),
               child: Text('Go to ListView Page'),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GridViewPage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 161, 74, 195), foregroundColor: Colors.white),
+              child: Text('Go to GridView Page'),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 33, 31, 34), foregroundColor: Colors.white),
+              child: Text('Go to Combination Widget'),
             ),
 
           ],

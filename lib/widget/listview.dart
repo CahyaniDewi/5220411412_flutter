@@ -6,7 +6,7 @@ class ListViewExamplePage extends StatefulWidget {
 }
 
 class _ListViewExamplePageState extends State<ListViewExamplePage> {
-  final List<String> items = List<String>.generate(10, (i) => 'Item $i');
+  final List<String> items = List<String>.generate(6, (i) => 'Item $i');
   bool _isButtonEnabled = true; // Menyimpan status Switch
 
   @override
